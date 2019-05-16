@@ -195,6 +195,15 @@ public class RemoteSession {
 				}
 				chatMessage = chatMessage.substring(0, chatMessage.length() - 1);
 				server.broadcastMessage(chatMessage);
+			} else if (c.equals("chat.consoleCommand")) {
+				//create chat message from args as it was split by ,
+				String command = "";
+				int count;
+				for(count=0;count<args.length;count++){
+					command = command + args[count] + ",";
+				}
+				command = command.substring(0, command.length() - 1);
+				server.consoleCommand(command);
 			
 			// events.clear
 			} else if (c.equals("events.clear")) {
